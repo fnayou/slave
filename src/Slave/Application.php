@@ -3,6 +3,10 @@
 namespace Slave;
 
 use Pimple\Container;
+use Slave\Command\SlaveAboutInfoCommand;
+use Slave\Command\SlaveAboutMasterCommand;
+use Slave\Command\SlaveDebugContainerCommand;
+use Slave\Command\SlaveDebugParametersCommand;
 use Slave\Provider\Configuration\ConfigurationProvider;
 use Slave\Provider\EventDispatcher\EventDispatcherProvider;
 use Slave\Provider\Log\LoggerProvider;
@@ -67,12 +71,7 @@ class Application extends BaseApplication
         }
 
         // override name and version
-        $this->setName(sprintf(
-            '%s [by %s v%s]',
-            $this->getBag()->getParameter('slave.name'),
-            static::NAME,
-            static::VERSION
-        ));
+        $this->setName($this->getBag()->getParameter('slave.name'));
         $this->setVersion($this->getBag()->getParameter('slave.version'));
     }
 
@@ -81,6 +80,13 @@ class Application extends BaseApplication
      */
     public function registerCommands()
     {
+        $this->addCommands([
+            new SlaveAboutMasterCommand(),
+            new SlaveAboutInfoCommand(),
+            new SlaveDebugContainerCommand(),
+            new SlaveDebugParametersCommand(),
+        ]);
+
         if (!class_exists('Symfony\Component\Finder\Finder')) {
             throw new \RuntimeException('You need the symfony/finder component to register commands.');
         }
@@ -92,13 +98,7 @@ class Application extends BaseApplication
 
         /** @var \Symfony\Component\Finder\SplFileInfo $bundle */
         foreach ($bundleFinder as $bundle) {
-            if (!is_dir(
-                $bundleCommandDir = $srcDir.
-                    DIRECTORY_SEPARATOR.
-                    $bundle->getRelativePathname().
-                    DIRECTORY_SEPARATOR.
-                    'Command'
-            )) {
+            if (!is_dir($bundleCommandDir = $srcDir.DIRECTORY_SEPARATOR.$bundle->getRelativePathname().DIRECTORY_SEPARATOR.'Command')) {
                 continue;
             }
             $finder = new Finder();

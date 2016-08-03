@@ -18,6 +18,7 @@ Slave have some pre registered providers :
 
 ### Version
   - 08/2016 : v1.0.0
+  - 08/2016 : v1.0.1
 
 ### Tech
 
@@ -49,7 +50,7 @@ MIT
 
 
    [Aymen Fnayou Inc.]: <https://aymen-fnayou.com>
-   [MasterCli]: <https://gitlab.com/u/fnayou>
+   [MasterCli]: <https://gitlab.com/fnayou/master-cli>
    [Symfony Components]: <http://symfony.com/fr/components>
    [Pimple]: <http://pimple.sensiolabs.org/>
    [Monolog]: <https://github.com/Seldaek/monolog>
