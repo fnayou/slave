@@ -1,13 +1,17 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Slave\Utils;
 
 /**
- * Class Bag
- * @package Slave\Utils
- */
-/**
- * Class Bag
- * @package Slave\Utils
+ * Class Bag.
  */
 class Bag extends \Slave\Utils\DotNotation
 {
@@ -20,7 +24,8 @@ class Bag extends \Slave\Utils\DotNotation
     }
 
     /**
-     * @param $parameter
+     * @param string $parameter
+     *
      * @return bool
      */
     public function hasParameter($parameter)
@@ -29,7 +34,8 @@ class Bag extends \Slave\Utils\DotNotation
     }
 
     /**
-     * @param $parameter
+     * @param string $parameter
+     *
      * @return mixed
      */
     public function getParameter($parameter)
@@ -45,8 +51,8 @@ class Bag extends \Slave\Utils\DotNotation
     }
 
     /**
-     * @param $parameter
-     * @param $value
+     * @param string $parameter
+     * @param mixed  $value
      */
     public function setParameter($parameter, $value)
     {
@@ -54,8 +60,8 @@ class Bag extends \Slave\Utils\DotNotation
     }
 
     /**
-     * @param $parameter
-     * @param array $value
+     * @param string $parameter
+     * @param array  $value
      */
     public function addParameter($parameter, array $value)
     {

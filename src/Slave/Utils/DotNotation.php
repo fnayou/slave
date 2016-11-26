@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave\Utils;
 
@@ -14,19 +22,18 @@ namespace Slave\Utils;
  * $dn->add('bar.baz', ['boo'=>true]); // ['foo'=>false,'boo'=>true]
  *
  * @author Anton Medvedev <anton (at) elfet (dot) ru>
+ *
  * @version 2.0
+ *
  * @license MIT
+ *
  * @see https://gist.github.com/elfet/4713488
  */
 /**
- * Class DotNotation
- * @package Slave\Utils
+ * Class DotNotation.
  */
 class DotNotation
 {
-    /**
-     *
-     */
     const SEPARATOR = '/[:\.]/';
 
     /**
@@ -35,7 +42,7 @@ class DotNotation
     protected $values = [];
 
     /**
-     * @var array
+     * @param array $values
      */
     public function __construct(array $values)
     {
@@ -44,7 +51,18 @@ class DotNotation
 
     /**
      * @param string $path
+     * @param array  $values
+     */
+    public function add($path, array $values)
+    {
+        $get = (array) $this->get($path);
+        $this->set($path, $this->arrayMergeRecursiveDistinct($get, $values));
+    }
+
+    /**
+     * @param string $path
      * @param string $default
+     *
      * @return mixed
      */
     protected function get($path, $default = null)
@@ -67,12 +85,12 @@ class DotNotation
 
     /**
      * @param string $path
-     * @param mixed $value
+     * @param mixed  $value
      */
     protected function set($path, $value)
     {
         if (!empty($path)) {
-            $at = & $this->values;
+            $at = &$this->values;
             $keys = $this->explode($path);
 
             while (count($keys) > 0) {
@@ -89,7 +107,7 @@ class DotNotation
                         $at[$key] = [];
                     }
 
-                    $at = & $at[$key];
+                    $at = &$at[$key];
                 }
             }
         } else {
@@ -98,17 +116,8 @@ class DotNotation
     }
 
     /**
-     * @param $path
-     * @param array $values
-     */
-    public function add($path, array $values)
-    {
-        $get = (array)$this->get($path);
-        $this->set($path, $this->arrayMergeRecursiveDistinct($get, $values));
-    }
-
-    /**
      * @param string $path
+     *
      * @return bool
      */
     protected function has($path)
@@ -144,6 +153,7 @@ class DotNotation
 
     /**
      * @param $path
+     *
      * @return array
      */
     protected function explode($path)
@@ -155,7 +165,7 @@ class DotNotation
      * array_merge_recursive does indeed merge arrays, but it converts values with duplicate
      * keys to arrays rather than overwriting the value in the first array with the duplicate
      * value in the second array, as array_merge does. I.e., with array_merge_recursive,
-     * this happens (documented behavior):
+     * this happens (documented behavior):.
      *
      * array_merge_recursive(array('key' => 'org value'), array('key' => 'new value'));
      *     => array('key' => array('org value', 'new value'));
@@ -176,7 +186,9 @@ class DotNotation
      *
      * @param array $array1
      * @param array $array2
+     *
      * @return array
+     *
      * @author Daniel <daniel (at) danielsmedegaardbuus (dot) dk>
      * @author Gabriel Sobrinho <gabriel (dot) sobrinho (at) gmail (dot) com>
      * @author Anton Medvedev <anton (at) elfet (dot) ru>
@@ -205,10 +217,11 @@ class DotNotation
     }
 
     /**
-     * return flatten array with dotted path and values
+     * return flatten array with dotted path and values.
      *
-     * @param $parameters
-     * @param null $parent
+     * @param array       $parameters
+     * @param null|string $parent
+     *
      * @return array
      */
     protected function flattenValues($parameters, $parent = null)

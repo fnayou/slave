@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave\Provider\Configuration;
 
@@ -7,8 +15,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 /**
- * Class ConfigurationSettings
- * @package Slave\Provider\Configuration
+ * Class ConfigurationSettings.
  */
 class ConfigurationSettings implements ConfigurationInterface
 {
@@ -29,7 +36,7 @@ class ConfigurationSettings implements ConfigurationInterface
 
     /**
      * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
-     *         |\Symfony\Component\Config\Definition\Builder\NodeDefinition
+     *                                                                          |\Symfony\Component\Config\Definition\Builder\NodeDefinition
      */
     public function addApplicationNode()
     {
@@ -72,7 +79,7 @@ class ConfigurationSettings implements ConfigurationInterface
 
     /**
      * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
-     *         |\Symfony\Component\Config\Definition\Builder\NodeDefinition
+     *                                                                          |\Symfony\Component\Config\Definition\Builder\NodeDefinition
      */
     public function addLoggerNode()
     {
@@ -106,10 +113,10 @@ class ConfigurationSettings implements ConfigurationInterface
                         400,
                         500,
                         550,
-                        600
+                        600,
                     ])
                     ->defaultValue('DEBUG')
-                    ->info(<<<EOT
+                    ->info(<<<'EOT'
   logger level : DEBUG, INFO, NOTICE, WARNING, ERROR, CRITICAL, ALERT, EMERGENCY 
   or 
   100, 200, 250, 300, 400, 500, 550, 600.

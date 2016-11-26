@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave\Command;
 
@@ -8,8 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
- * Class SlaveDebugContainerCommand
- * @package Slave\Command
+ * Class SlaveDebugContainerCommand.
  */
 class SlaveDebugContainerCommand extends Command
 {
@@ -28,7 +35,7 @@ class SlaveDebugContainerCommand extends Command
         $this->setName('slave:debug:container')
             ->setDescription('debug container content')
             ->setHelp(
-                <<<EOT
+                <<<'EOT'
 will output list of services of the container 
 EOT
             );
@@ -47,7 +54,7 @@ EOT
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @see \Symfony\Component\Console\Command\Command::execute()
      */

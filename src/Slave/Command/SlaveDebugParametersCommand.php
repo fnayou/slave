@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave\Command;
 
@@ -8,8 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
- * Class SlaveDebugParametersCommand
- * @package Slave\Command
+ * Class SlaveDebugParametersCommand.
  */
 class SlaveDebugParametersCommand extends Command
 {
@@ -28,7 +35,7 @@ class SlaveDebugParametersCommand extends Command
         $this->setName('slave:debug:parameters')
             ->setDescription('debug defined parameters')
             ->setHelp(
-                <<<EOT
+                <<<'EOT'
 will output list of defined parameters with their values 
 EOT
             );
@@ -47,7 +54,7 @@ EOT
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @see \Symfony\Component\Console\Command\Command::execute()
      */
@@ -64,7 +71,7 @@ EOT
         foreach ($parameters as $parameter => $value) {
             $rows[] = [
                 $parameter,
-                $value
+                $value,
             ];
         }
 

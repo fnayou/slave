@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave\Provider\Log;
 
@@ -8,8 +16,7 @@ use Monolog\Logger;
 use Monolog\Processor\PsrLogMessageProcessor;
 
 /**
- * Class LoggerProvider
- * @package Slave\Provider\Log
+ * Class LoggerProvider.
  */
 class LoggerProvider implements \Pimple\ServiceProviderInterface
 {
@@ -48,6 +55,7 @@ class LoggerProvider implements \Pimple\ServiceProviderInterface
 
     /**
      * @param string|int $level
+     *
      * @return int
      */
     protected function translateLevel($level)

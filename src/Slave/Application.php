@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave;
 
@@ -16,8 +24,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Finder\Finder;
 
 /**
- * Class Application
- * @package Slave
+ * Class Application.
  */
 class Application extends BaseApplication
 {
@@ -54,7 +61,7 @@ class Application extends BaseApplication
     }
 
     /**
-     * register default providers
+     * register default providers.
      */
     public function registerProviders()
     {
@@ -76,7 +83,7 @@ class Application extends BaseApplication
     }
 
     /**
-     * register commands
+     * register commands.
      */
     public function registerCommands()
     {
@@ -130,6 +137,7 @@ class Application extends BaseApplication
 
     /**
      * @param Container $container
+     *
      * @return Container
      */
     public function setContainer(Container $container)
@@ -138,7 +146,8 @@ class Application extends BaseApplication
     }
 
     /**
-     * @param $name
+     * @param string $name
+     *
      * @return \Closure
      */
     public function getService($name)
@@ -154,8 +163,8 @@ class Application extends BaseApplication
     }
 
     /**
-     * @param string $name
-     * @param \Closure  $closure
+     * @param string   $name
+     * @param \Closure $closure
      */
     public function setService($name, $closure)
     {

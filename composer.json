@@ -22,10 +22,32 @@
     "symfony/event-dispatcher": "^3.0",
     "symfony/finder": "^3.1"
   },
+  "require-dev": {
+    "escapestudios/symfony2-coding-standard": "^2.9",
+    "friendsofphp/php-cs-fixer": "^1.12",
+    "phpunit/phpunit": "5.1.4"
+  },
   "autoload" : {
     "psr-4" : {
       "Slave\\": "src/Slave/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "bin/phpunit",
+    "sniff": "bin/phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 src",
+    "fix": "bin/php-cs-fixer --level=symfony fix src/"
+  },
+  "config": {
+    "platform": {
+      "php": "5.6.0"
+    },
+    "bin-dir": "bin",
+    "sort-packages": true
   },
   "extra" : {
     "branch-alias" : {

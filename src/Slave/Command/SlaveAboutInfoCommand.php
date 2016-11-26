@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave\Command;
 
@@ -8,8 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
- * Class SlaveAboutInfoCommand
- * @package Slave\Command
+ * Class SlaveAboutInfoCommand.
  */
 class SlaveAboutInfoCommand extends Command
 {
@@ -28,7 +35,7 @@ class SlaveAboutInfoCommand extends Command
         $this->setName('slave:about:info')
             ->setDescription('information about the main application')
             ->setHelp(
-                <<<EOT
+                <<<'EOT'
 will output some information about the application that use SALVE cli tool 
 EOT
             );
@@ -47,7 +54,7 @@ EOT
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @see \Symfony\Component\Console\Command\Command::execute()
      */
