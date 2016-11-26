@@ -1,4 +1,5 @@
-# Slave
+Slave
+=====
 
 Slave is a minimalistic application base on `symfony/console` and exclusively for [MasterCli] micro framework. it use :
 
@@ -16,11 +17,11 @@ Slave have some pre registered providers :
 
 > Better use Slave with [MasterCli] micro framework
 
-### Version
+## Version
   - 08/2016 : v1.0.0
   - 08/2016 : v1.0.1
 
-### Tech
+## Technologies
 
 Slave uses a number of open source projects to work properly:
 
@@ -28,7 +29,7 @@ Slave uses a number of open source projects to work properly:
 * [Pimple] - PHP Dependency Injection Container.
 * [Monolog] - Logging for PHP.
 
-### Installation
+## Installation
 
 You need composer:
 
@@ -36,12 +37,11 @@ You need composer:
 $ php composer require fnayou/slave
 ```
 
-### Todos
+## Todo
 
  - lot of things
 
-License
-----
+## License
 
 MIT
 
@@ -49,8 +49,8 @@ MIT
 © 2015 [Aymen Fnayou Inc.]
 
 
-   [Aymen Fnayou Inc.]: <https://aymen-fnayou.com>
-   [MasterCli]: <https://gitlab.com/fnayou/master-cli>
+   [Aymen Fnayou]: <https://aymen-fnayou.com>
+   [MasterCli]: <https://github.com/fnayou/master-cli>
    [Symfony Components]: <http://symfony.com/fr/components>
    [Pimple]: <http://pimple.sensiolabs.org/>
    [Monolog]: <https://github.com/Seldaek/monolog>

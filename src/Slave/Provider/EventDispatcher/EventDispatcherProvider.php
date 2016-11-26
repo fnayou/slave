@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave\Provider\EventDispatcher;
 
@@ -8,8 +16,7 @@ use Symfony\Component\Console\Event\ConsoleExceptionEvent;
 use Symfony\Component\Console\ConsoleEvents;
 
 /**
- * Class EventDispatcherProvider
- * @package Slave\Provider\EventDispatcher
+ * Class EventDispatcherProvider.
  */
 class EventDispatcherProvider implements \Pimple\ServiceProviderInterface
 {

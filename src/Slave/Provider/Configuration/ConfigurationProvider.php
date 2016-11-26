@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the Slave package.
+ *
+ * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace Slave\Provider\Configuration;
 
@@ -10,13 +18,13 @@ use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * Class ConfigurationProvider
- * @package Slave\Provider\Configuration
+ * Class ConfigurationProvider.
  */
 class ConfigurationProvider implements \Pimple\ServiceProviderInterface
 {
     /**
      * @param Container $container
+     *
      * @throws \Exception
      */
     public function register(Container $container)
