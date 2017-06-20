@@ -1,57 +1,57 @@
 {
-  "name": "fnayou/slave",
-  "description": "minimalistic cli tool made with symfony/console and w/o silex",
-  "type": "library",
-  "homepage": "https://gitlab.com/fnayou/slave",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Aymen FNAYOU",
-      "email": "fnayou.aymen@gmail.com",
-      "homepage": "http://aymen-fnayou.com",
-      "role": "Developer"
-    }
-  ],
-  "require": {
-    "symfony/console": "^3.0",
-    "symfony/config": "^3.0",
-    "symfony/yaml": "^3.0",
-    "pimple/pimple": "~3.0",
-    "incenteev/composer-parameter-handler": "^2.1",
-    "monolog/monolog": "@stable",
-    "symfony/event-dispatcher": "^3.0",
-    "symfony/finder": "^3.1"
-  },
-  "require-dev": {
-    "escapestudios/symfony2-coding-standard": "^2.9",
-    "friendsofphp/php-cs-fixer": "^1.12",
-    "phpunit/phpunit": "5.1.4"
-  },
-  "autoload" : {
-    "psr-4" : {
-      "Slave\\": "src/Slave/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests/"
-    }
-  },
-  "scripts": {
-    "test": "bin/phpunit",
-    "sniff": "bin/phpcs --standard=vendor/escapestudios/symfony2-coding-standard/Symfony2 src",
-    "fix": "bin/php-cs-fixer --level=symfony fix src/"
-  },
-  "config": {
-    "platform": {
-      "php": "5.6.0"
+    "name": "fnayou/slave",
+    "type": "library",
+    "description": "minimalistic cli tool made with symfony/console and without silex",
+    "keywords": [
+        "php",
+        "console",
+        "command",
+        "cli",
+        "notation"
+    ],
+    "homepage": "https://github.com/fnayou/slave",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aymen FNAYOU",
+            "email": "fnayou.aymen@gmail.com",
+            "homepage": "http://aymen-fnayou.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "incenteev/composer-parameter-handler": "^2.1",
+        "monolog/monolog": "^1.23",
+        "pimple/pimple": "^3.0",
+        "symfony/config": "^3.3",
+        "symfony/console": "^3.3",
+        "symfony/event-dispatcher": "^3.3",
+        "symfony/finder": "^3.3",
+        "symfony/yaml": "^3.3"
     },
-    "bin-dir": "bin",
-    "sort-packages": true
-  },
-  "extra" : {
-    "branch-alias" : {
-      "dev-master" : "1.0.x-dev"
+    "require-dev": {
+        "escapestudios/symfony2-coding-standard": "^2.10",
+        "fnayou/standards": "^1.2",
+        "friendsofphp/php-cs-fixer": "^2.3",
+        "phpunit/phpunit": "^5.1",
+        "symfony/var-dumper": "^3.3"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "Fnayou\\Slave\\": "src/Slave/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fnayou\\Slave\\Tests\\": "tests/"
+        }
+    },
+    "extra" : {
+        "branch-alias" : {
+            "dev-master" : "1.0.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
     }
-  }
 }

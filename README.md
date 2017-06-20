@@ -1,7 +1,7 @@
 Slave
 =====
 
-Slave is a minimalistic application base on `symfony/console` and exclusively for [MasterCli] micro framework. it use :
+Slave is a minimalistic application base on `symfony/console` and exclusively for [MasterCli][link-master-cli] micro framework. it use :
 
   - Symfony components (config, event dispatcher, finder, etc.)
   - Pimple
@@ -15,19 +15,15 @@ Slave have some pre registered providers :
   - EventDispatcher : initiate an instance of the event dispatcher
   - Logger : initiate (or not) Monlog according to the given parameters within `app/config`
 
-> Better use Slave with [MasterCli] micro framework
-
-## Version
-  - 08/2016 : v1.0.0
-  - 08/2016 : v1.0.1
+> Better use Slave with [MasterCli][link-master-cli] micro framework
 
 ## Technologies
 
 Slave uses a number of open source projects to work properly:
 
-* [Symfony Components] - bunch of Symfony components.
-* [Pimple] - PHP Dependency Injection Container.
-* [Monolog] - Logging for PHP.
+* [Symfony Components][link-symfony-component] - bunch of Symfony components.
+* [Pimple][link-pimple] - PHP Dependency Injection Container.
+* [Monolog][link-monolog] - Logging for PHP.
 
 ## Installation
 
@@ -37,20 +33,19 @@ You need composer:
 $ php composer require fnayou/slave
 ```
 
-## Todo
+## Credits
 
- - lot of things
+- [Aymen FNAYOU][link-author] - [GitLab][link-author-gitlab] - [GitHub][link-author-github]
 
 ## License
 
-MIT
+![license](https://img.shields.io/badge/license-MIT-lightgrey.svg) Please see [License File](LICENSE.md) for more information.
 
 
-© 2015 [Aymen Fnayou Inc.]
-
-
-   [Aymen Fnayou]: <https://aymen-fnayou.com>
-   [MasterCli]: <https://github.com/fnayou/master-cli>
-   [Symfony Components]: <http://symfony.com/fr/components>
-   [Pimple]: <http://pimple.sensiolabs.org/>
-   [Monolog]: <https://github.com/Seldaek/monolog>
+[link-author]: https://aymen-fnayou.com
+[link-author-gitlab]: https://gitlab.com/fnayou
+[link-author-github]: https://github.com/fnayou
+[link-master-cli]: https://github.com/fnayou/master-cli
+[link-symfony-component]: http://symfony.com/fr/components
+[link-pimple]: http://pimple.sensiolabs.org/
+[link-monolog]: https://github.com/Seldaek/monolog
