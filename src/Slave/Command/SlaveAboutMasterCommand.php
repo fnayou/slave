@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Slave package.
+ * This file is part of the fnayou/slave package.
  *
  * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
  *
@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Slave\Command;
+namespace Fnayou\Slave\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,6 +20,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 class SlaveAboutMasterCommand extends Command
 {
+    const ASCII_ART = 'ICAgICA8aW5mbz48Y29tbWVudD58fF98fDwvY29tbWVudD4KIF9fX19fPGNvbW1lbnQ+fHxffHw8L2NvbW1lbnQ+Ci8gIF9fXzxjb21tZW50Pnx8X3x8PC9jb21tZW50PgpcIGAtLS0uPGNvbW1lbnQ+fF98fDwvY29tbWVudD4gX18gX19fICAgX19fX18KIGAtLS4gIFxfPGNvbW1lbnQ+fHw8L2NvbW1lbnQ+LyBfYCBcIFwgLyAvIF8gXAovXF9fLyAgLzxjb21tZW50Pl98fDwvY29tbWVudD4gKF98IHxcIFYgLyAgX18vClxfX19fXy88Y29tbWVudD58IHx8PC9jb21tZW50PlxfXyxffCBcXy8gXF9fX3w8L2luZm8+CiAgICAgICAgICAgICBtYWRlIGJ5IDxjb21tZW50PkF5bWVuIEZOQVlPVTwvY29tbWVudD4=';
+
     /**
      * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
@@ -60,18 +62,7 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $asciiArt = <<<'EOT'
-     <info><comment>||_||</comment>
- _____<comment>||_||</comment>
-/  ___<comment>||_||</comment>
-\ `---.<comment>|_||</comment> __ ___   _____
- `--.  \_<comment>||</comment>/ _` \ \ / / _ \
-/\__/  /<comment>_||</comment> (_| |\ V /  __/
-\_____/<comment>| ||</comment>\__,_| \_/ \___|</info>
-             made by <comment>Aymen FNAYOU</comment>
-EOT;
-
-        $this->style->text($asciiArt);
+        $this->style->text(\base64_decode(static::ASCII_ART, true));
 
         $this->style->newLine(1);
         $this->style->text('SLAVE is a small cli tool based on :');
@@ -80,6 +71,6 @@ EOT;
             'pimple container',
             'monolog',
         ]);
-        $this->style->note('Please feel free to contribute to the project if you want ;)');
+        $this->style->note('Please feel free to contribute to the project if you want :  https://github.com/fnayou/slave ;)');
     }
 }

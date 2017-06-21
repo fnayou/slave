@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Slave package.
+ * This file is part of the fnayou/slave package.
  *
  * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
  *
@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Slave\Command;
+namespace Fnayou\Slave\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -60,14 +60,14 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var \Slave\Application $application */
+        /** @var \Fnayou\Slave\Application $application */
         $application = $this->getApplication();
 
         $this->style->listing([
-            sprintf('application : %s', $application->getBag()->getParameter('slave.name')),
-            sprintf('version : %s', $application->getBag()->getParameter('slave.version')),
+            \sprintf('application : %s', $application->getBag()->get('slave.name')),
+            \sprintf('version : %s', $application->getBag()->get('slave.version')),
         ]);
 
-        $this->style->text($application->getBag()->getParameter('slave.description'));
+        $this->style->text($application->getBag()->get('slave.description'));
     }
 }

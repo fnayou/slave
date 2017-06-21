@@ -28,7 +28,7 @@ class EventDispatcherProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $container['dispatcher'] = function() {
+        $container['dispatcher'] = function () {
             $dispatcher = new EventDispatcher();
 
             $dispatcher->addListener(ConsoleEvents::ERROR, function (ConsoleErrorEvent $event) {

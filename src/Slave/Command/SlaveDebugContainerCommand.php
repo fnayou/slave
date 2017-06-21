@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Slave package.
+ * This file is part of the fnayou/slave package.
  *
  * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
  *
@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Slave\Command;
+namespace Fnayou\Slave\Command;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -60,19 +60,19 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var \Slave\Application $application */
+        /** @var \Fnayou\Slave\Application $application */
         $application = $this->getApplication();
 
         $headers = ['service', 'namespace', 'path'];
         $rows = [];
 
         foreach ($application->getContainer()->keys() as $service) {
-            $reflector = new \ReflectionClass(get_class($application->getContainer()->offsetGet($service)));
+            $reflectedClass = new \ReflectionClass(get_class($application->getContainer()->offsetGet($service)));
 
             $rows[] = [
                 $service,
-                $reflector->getName(),
-                dirname($reflector->getFileName()),
+                $reflectedClass->getName(),
+                \dirname($reflectedClass->getFileName()),
             ];
         }
 

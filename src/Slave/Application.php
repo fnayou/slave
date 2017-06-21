@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Slave package.
+ * This file is part of the fnayou/slave package.
  *
  * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
  *
@@ -8,17 +8,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Slave;
+namespace Fnayou\Slave;
 
+use Fnayou\Slave\Command\SlaveAboutInfoCommand;
+use Fnayou\Slave\Command\SlaveAboutMasterCommand;
+use Fnayou\Slave\Command\SlaveDebugContainerCommand;
+use Fnayou\Slave\Command\SlaveDebugParametersCommand;
+use Fnayou\Slave\Provider\Configuration\ConfigurationProvider;
+use Fnayou\Slave\Provider\EventDispatcher\EventDispatcherProvider;
+use Fnayou\Slave\Provider\Log\LoggerProvider;
 use Pimple\Container;
-use Slave\Command\SlaveAboutInfoCommand;
-use Slave\Command\SlaveAboutMasterCommand;
-use Slave\Command\SlaveDebugContainerCommand;
-use Slave\Command\SlaveDebugParametersCommand;
-use Slave\Provider\Configuration\ConfigurationProvider;
-use Slave\Provider\EventDispatcher\EventDispatcherProvider;
-use Slave\Provider\Log\LoggerProvider;
-use Slave\Utils\Bag;
 use Symfony\Component\Console\Application as BaseApplication;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Finder\Finder;
@@ -73,13 +72,13 @@ class Application extends BaseApplication
         $this->getContainer()->register(new ConfigurationProvider());
 
         // Monolog Provider
-        if ($this->getBag()->getParameter('logger.enabled')) {
+        if ($this->getBag()->get('logger.enabled')) {
             $this->getContainer()->register(new LoggerProvider());
         }
 
         // override name and version
-        $this->setName($this->getBag()->getParameter('slave.name'));
-        $this->setVersion($this->getBag()->getParameter('slave.version'));
+        $this->setName($this->getBag()->get('slave.name'));
+        $this->setVersion($this->getBag()->get('slave.version'));
     }
 
     /**
@@ -94,18 +93,18 @@ class Application extends BaseApplication
             new SlaveDebugParametersCommand(),
         ]);
 
-        if (!class_exists('Symfony\Component\Finder\Finder')) {
+        if (!\class_exists('Symfony\Component\Finder\Finder')) {
             throw new \RuntimeException('You need the symfony/finder component to register commands.');
         }
 
-        $srcDir = $this->getBag()->getParameter('paths.sl_src_dir');
+        $srcDir = $this->getBag()->get('paths.sl_src_dir');
 
         $bundleFinder = new Finder();
         $bundleFinder->directories()->in($srcDir)->depth(0);
 
         /** @var \Symfony\Component\Finder\SplFileInfo $bundle */
         foreach ($bundleFinder as $bundle) {
-            if (!is_dir($bundleCommandDir = $srcDir.DIRECTORY_SEPARATOR.$bundle->getRelativePathname().DIRECTORY_SEPARATOR.'Command')) {
+            if (!\is_dir($bundleCommandDir = $srcDir.DIRECTORY_SEPARATOR.$bundle->getRelativePathname().DIRECTORY_SEPARATOR.'Command')) {
                 continue;
             }
             $finder = new Finder();
@@ -148,7 +147,7 @@ class Application extends BaseApplication
     /**
      * @param string $name
      *
-     * @return \Closure
+     * @return mixed
      */
     public function getService($name)
     {
@@ -172,7 +171,7 @@ class Application extends BaseApplication
     }
 
     /**
-     * @return \Slave\Utils\Bag
+     * @return \Fnayou\Slave\Bag
      */
     public function getBag()
     {

@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Slave package.
+ * This file is part of the fnayou/slave package.
  *
  * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
  *
@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Slave\Provider\Configuration;
+namespace Fnayou\Slave\Provider\Configuration;
 
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\Builder\VariableNodeDefinition;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
 /**
  * Class ConfigurationSettings.
@@ -35,8 +35,7 @@ class ConfigurationSettings implements ConfigurationInterface
     }
 
     /**
-     * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
-     *                                                                          |\Symfony\Component\Config\Definition\Builder\NodeDefinition
+     * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition|\Symfony\Component\Config\Definition\Builder\NodeDefinition
      */
     public function addApplicationNode()
     {
@@ -78,8 +77,7 @@ class ConfigurationSettings implements ConfigurationInterface
     }
 
     /**
-     * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition
-     *                                                                          |\Symfony\Component\Config\Definition\Builder\NodeDefinition
+     * @return \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition|\Symfony\Component\Config\Definition\Builder\NodeDefinition
      */
     public function addLoggerNode()
     {

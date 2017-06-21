@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Slave package.
+ * This file is part of the fnayou/slave package.
  *
  * Copyright (c) 2016. Aymen FNAYOU <fnayou.aymen@gmail.com>
  *
@@ -8,9 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Slave\Provider\Configuration;
+namespace Fnayou\Slave\Provider\Configuration;
 
 use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
@@ -20,19 +21,18 @@ use Symfony\Component\Filesystem\Filesystem;
 /**
  * Class ConfigurationProvider.
  */
-class ConfigurationProvider implements \Pimple\ServiceProviderInterface
+class ConfigurationProvider implements ServiceProviderInterface
 {
     /**
-     * @param Container $container
+     * @param \Pimple\Container $container
      *
      * @throws \Exception
      */
     public function register(Container $container)
     {
-        /** @var \Slave\Utils\Bag $bag */
+        /** @var \Fnayou\Slave\Bag $bag */
         $bag = $container->offsetGet('bag');
 
-        // define paths
         $paths = [];
         $paths['sl_root_dir'] = SLAVE_ROOT_DIR;
         $paths['sl_app_dir'] = $paths['sl_root_dir'].'/app';
@@ -41,25 +41,23 @@ class ConfigurationProvider implements \Pimple\ServiceProviderInterface
         $paths['sl_src_dir'] = $paths['sl_root_dir'].'/src';
         $paths['sl_tests_dir'] = $paths['sl_root_dir'].'/tests';
 
-        // we make sure that paths exist, otherwise we create them
         $filesystem = new Filesystem();
         foreach ($paths as $path) {
-            if ($filesystem->exists($path) === false) {
+            if (false === $filesystem->exists($path)) {
                 $filesystem->mkdir($path);
             }
         }
 
-        // cache file by environment.
-        $cacheConfigFile = sprintf(
+        $cacheConfigFile = \sprintf(
             '%s/%s/%s.cache',
             $paths['sl_cache_dir'],
-            $bag->getParameter('environment'),
-            sha1($paths['sl_cache_dir'])
+            $bag->get('environment'),
+            \sha1($paths['sl_cache_dir'])
         );
 
-        $cache = new ConfigCache($cacheConfigFile, $bag->getParameter('debug'));
+        $cache = new ConfigCache($cacheConfigFile, $bag->get('debug'));
 
-        if ($cache->isFresh() === false || $bag->getParameter('environment') === 'dev') {
+        if (false === $cache->isFresh() || 'dev' === $bag->get('environment')) {
             $directories = [$paths['sl_app_dir']];
             $locator = new FileLocator($directories);
 
@@ -77,13 +75,13 @@ class ConfigurationProvider implements \Pimple\ServiceProviderInterface
 
             $resource = new FileResource($paths['sl_app_dir'].'/config.yml');
 
-            $cache->write(serialize($parametersData), [$resource]);
+            $cache->write(\serialize($parametersData), [$resource]);
         }
 
-        $content = unserialize(file_get_contents($cacheConfigFile));
+        $content = \unserialize(\file_get_contents($cacheConfigFile));
 
-        $bag->setParameters(array_merge(
-            $bag->getRawParameters(),
+        $bag->setParameters(\array_merge(
+            $bag->getParameters(),
             ['paths' => $paths],
             $content
         ));
