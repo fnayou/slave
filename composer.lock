@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7605f76cd719e7802212404bd626f4e5",
+    "content-hash": "4fdd74cbad98f264a0e1cf14cffd8a52",
     "packages": [
+        {
+            "name": "fnayou/dotted",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fnayou/dotted.git",
+                "reference": "a6a5701ebfc5fd84589e79270ad8614edb0ed514"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fnayou/dotted/zipball/a6a5701ebfc5fd84589e79270ad8614edb0ed514",
+                "reference": "a6a5701ebfc5fd84589e79270ad8614edb0ed514",
+                "shasum": ""
+            },
+            "require-dev": {
+                "escapestudios/symfony2-coding-standard": "^2.10",
+                "fnayou/standards": "^1.2",
+                "friendsofphp/php-cs-fixer": "^2.3",
+                "phpunit/phpunit": "^5.1",
+                "symfony/var-dumper": "^3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fnayou\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aymen FNAYOU",
+                    "email": "fnayou.aymen@gmail.com",
+                    "homepage": "http://aymen-fnayou.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "php library to access multidimensional arrays",
+            "homepage": "https://github.com/fnayou/dotted",
+            "keywords": [
+                "array",
+                "dotted",
+                "multidimensional",
+                "notation",
+                "php"
+            ],
+            "time": "2017-06-20T13:59:40+00:00"
+        },
         {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.2",
